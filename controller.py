@@ -1,11 +1,14 @@
+# Реализовать любую программу (например игра "Кости") с помощью паттерна MVC у которой есть консольный вариант и графический. 
+#--------------------------------------
 import model as m
-import view as v
+# import view as v
+import view2 as v
 
 
 def user_roll():
     try:
-        m.bet_points = int(input('Your bet (points): '))
-        m.user_num = int(input('On (dice number): '))
+        m.bet_points = int(v.get_bet_p())
+        m.user_num = int(v.get_bet_n())
     except ValueError:
         return 'Not a number'
 
@@ -13,11 +16,6 @@ def user_roll():
         return 'Invalid bet'
 
     return m.check(m.user_num)
-
-def confirm():
-    if input('Again? (q-exit) '):
-        return False
-    return True
 
 def play():
     while m.score > 0:
@@ -28,13 +26,17 @@ def play():
             else:
                 v.show_res(False, m.score)
         else:
-            print(roll_it)
-            
-        if not confirm():
-            return
-    v.exit(True)
+            v.show_msg(roll_it)
+        
+        try:
+            if not v.confirm():
+                return
+        except:
+            v.btn_pressed.set(1)
+            v.confirm()
+
+    v.show_msg('No more points!')
+    v.exit()
 
 if __name__ == '__main__':
     v.start()
-    play()
-    v.exit()

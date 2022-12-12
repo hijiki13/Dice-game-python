@@ -45,5 +45,5 @@ dice = {
 
 def show_dice(*strings):
     for i in strings:
-        print(i.center(55))
+        print(i.center(30))
     print()
