@@ -1,4 +1,4 @@
-# Реализовать любую программу (например игра "Кости") с помощью паттерна MVC у которой есть консольный вариант и графический. 
+# Реализовать любую программу (например игра "Кости") с помощью паттерна MVC у которой есть консольный вариант (view) и графический (view2). 
 #--------------------------------------
 import model as m
 # import view as v
@@ -12,7 +12,7 @@ def user_roll():
     except ValueError:
         return 'Not a number'
 
-    if m.bet_points > m.score or m.user_num not in range(1, 6):
+    if m.bet_points > m.score or m.user_num not in range(1, 7):
         return 'Invalid bet'
 
     return m.check(m.user_num)
@@ -37,6 +37,7 @@ def play():
 
     v.show_msg('No more points!')
     v.exit()
+    return
 
 if __name__ == '__main__':
     v.start()

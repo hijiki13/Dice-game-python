@@ -6,7 +6,7 @@ win_num = 6
 bet_points = 1
 
 def roll():
-    return randint(1, 6)
+    return randint(1, 7)
 
 def check(user_num):
     global score
