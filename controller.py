@@ -37,7 +37,6 @@ def play():
 
     v.show_msg('No more points!')
     v.exit()
-    return
-
+    
 if __name__ == '__main__':
     v.start()

@@ -19,10 +19,3 @@ def check(user_num):
     else:
         score -= bet_points
         return False
-
-if __name__ == "__main__":
-    i = 0
-    while i < 10:
-        print(check(user_num))
-        print(score)
-        i += 1
