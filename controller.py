@@ -1,8 +1,8 @@
 # Реализовать любую программу (например игра "Кости") с помощью паттерна MVC у которой есть консольный вариант (view) и графический (view2). 
 #--------------------------------------
 import model as m
-# import view as v
-import view2 as v
+import view as v
+# import view2 as v
 
 
 def user_roll():
@@ -32,8 +32,9 @@ def play():
             if not v.confirm():
                 return
         except:
-            v.btn_pressed.set(1)
-            v.confirm()
+            if m.score > 0:
+                v.btn_pressed.set(1)
+                v.confirm_btn()
 
     v.show_msg('No more points!')
     v.exit()

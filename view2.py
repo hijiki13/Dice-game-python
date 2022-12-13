@@ -1,13 +1,14 @@
 import tkinter as tk
 import controller as c
+import sys
 
 # title of window
 window = tk.Tk()
 window.title('Play Dice')
 
 # title inside window
-start = tk.Label(text='Lets play!', fg="cyan", bg="grey8", width=50, height=2)
-start.grid(row=0, columnspan=2, sticky='n', pady=(0, 10))
+game_title = tk.Label(text='Lets play!', fg="cyan", bg="grey8", width=50, height=2)
+game_title.grid(row=0, columnspan=2, sticky='n', pady=(0, 10))
 
 # bet input 1 (points)
 lbl_bet_p = tk.Label(text='Your bet (points):', width=30)
@@ -28,10 +29,10 @@ btn.grid(row=9, column=0, columnspan=2, sticky='s', pady=(10, 5))
 
 # Results
 lbl_win = tk.Label(text='Number on dice: ', width=12)
-lbl_win_num = tk.Label(text='', width=2)
+lbl_win_num = tk.Label(text='', width=4)
 lbl_res = tk.Label(text='')
 lbl_score = tk.Label(text='Score: ', width=12)
-lbl_score_val = tk.Label(text='', width=2)
+lbl_score_val = tk.Label(text='', width=4)
 lbl_score_val.bind('change')
 lbl_msg = tk.Label(text='')
 # display result
@@ -64,12 +65,13 @@ def show_msg(msg):
 def empty_msg():
     lbl_msg['text'] = ''
 
-def confirm():
-    btn.wait_variable()
+def confirm_btn():
+    btn.wait_variable(btn_pressed)
 
 def start():
     window.mainloop()
 
 def exit():
+    btn_pressed.set(btn_pressed.get())
     btn.destroy()
-    window.after(1500, window.destroy)
+    window.after(2000, window.destroy)
